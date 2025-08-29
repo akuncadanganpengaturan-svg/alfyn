@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Wisuda Miss Ira</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad390);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      max-width: 380px;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card h1 {
+      font-size: 24px;
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: #e91e63;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #c2185b;
+    }
+
+    /* Confetti animation */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      animation: fall 5s infinite;
+    }
+
+    @keyframes fall {
+      0% {transform: translateY(0) rotate(0);}
+      100% {transform: translateY(100vh) rotate(720deg);}
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    /* Popup message */
+    .popup {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: 0.4s ease;
+    }
+
+    .popup.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup h2 {
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    .popup p {
+      color: #333;
+      font-size: 18px;
+    }
+
+    .close-btn {
+      margin-top: 15px;
+      background: #e91e63;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Foto Miss Ira -->
+    <img src="https://files.catbox.moe/goe7dx.jpg" alt="Miss Ira">
+    <h1>🎓 Selamat Wisuda Miss Ira 🎉</h1>
+    <p>Semoga ilmu dan gelarnya bermanfaat,  
+    menjadi berkah, dan selalu jadi inspirasi  
+    bagi semua muridmu 🙏✨</p>
+    <button class="btn" onclick="showPopup()">🥳 Congrats!</button>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <h2>🎉 Selamat! 🎓</h2>
+    <p>Miss Ira resmi lulus sidang 🎊<br>
+       Sukses selalu untuk langkah ke depannya ✨</p>
+    <button class="close-btn" onclick="closePopup()">Tutup</button>
+  </div>
+
+  <script>
+    // bikin konfeti warna-warni
+    for(let i=0; i<50; i++){
+      let confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.left = Math.random()*100 + "vw";
+      confetti.style.backgroundColor = 
+        ["#ff4081","#3f51b5","#4caf50","#ffeb3b","#ff5722"][Math.floor(Math.random()*5)];
+      confetti.style.animationDuration = (Math.random()*3+2) + "s";
+      document.body.appendChild(confetti);
+    }
+
+    // popup function
+    function showPopup(){
+      document.getElementById("popup").classList.add("active");
+    }
+    function closePopup(){
+      document.getElementById("popup").classList.remove("active");
+    }
+  </script>
+</body>
+</html>
